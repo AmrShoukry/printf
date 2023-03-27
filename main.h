@@ -11,4 +11,6 @@ void add_null_terminator(char *string, int length);
 char *reverse_string(char *string);
 char *rotate13_string(char *string);
 
+int *adjust_flags(int *flags, char specifier);
+
 #endif
