@@ -145,8 +145,8 @@ int _printf(const char *format, ...)
 					percentage_mode = 0;
 					flags[5] = number_result;
 					argument_char = va_arg(ap, int);
-					temporary_string = convert_char_to_string(argument_char);
-					counter += _printf(temporary_string);
+					put_char(argument_char);
+					counter++;
 				}
 				else
 				{
