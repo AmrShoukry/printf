@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _isupper - Entry point
+ * convert_decimal_to_base_string - Entry point
  *
  * @decimal: character
  * @len: int

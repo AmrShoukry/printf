@@ -16,10 +16,10 @@
 char *convert_address_to_string(void *ptr)
 {
 	unsigned long address = (unsigned long)ptr;
-	int shift = sizeof(address)*8 - 4;
+	int shift = sizeof(address) * 8 - 4;
 	int i, first_digit_found = 0;
 	int counter = 0;
-	char *result =(char *) malloc(16 * 1);
+	char *result = (char *) malloc(16 * 1);
 	int digit;
 
 	counter++;
@@ -27,7 +27,7 @@ char *convert_address_to_string(void *ptr)
 	result[0] = '0';
 	result[1] = 'x';
 
-	for (i = 0; i < sizeof(address)*2; i++)
+	for (i = 0; i < sizeof(address) * 2; i++)
 	{
 		digit = (address >> shift) & 0xf;
 		if (digit != 0 || first_digit_found)

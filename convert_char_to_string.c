@@ -15,6 +15,7 @@
 char *convert_char_to_string(char character)
 {
 	char *string = (char *) malloc(sizeof(char) * 2);
+
 	string[0] = character;
 	string[1] = '\0';
 

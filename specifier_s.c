@@ -5,7 +5,8 @@
 /**
  * specifier_s - Entry point
  *
- * @character: char
+ * @flags: char
+ * @string: s
  *
  * Description: 'Main function is used to print alphabets'
  *
@@ -16,7 +17,7 @@
 int specifier_s(int *flags, char *string)
 {
 	int counter = 0;
-	int i;	
+	int i;
 
 	int string_length = get_string_length(string);
 	int buffer_length = flags[5];
@@ -32,7 +33,7 @@ int specifier_s(int *flags, char *string)
 		counter += _printf(string);
 	}
 	else
-	{			
+	{
 		counter += _printf(string);
 		if (spaces_length > 0)
 		{
