@@ -1,4 +1,13 @@
 
+	//int slash_mode = 0, numbers_mode = 0, number_result = 0;
+	//int i = 0, found = 0;
+	//int lc, base, argument_length, argument_int;
+	//int flags[] = {0, 0, 0, 0, 0, 0, 0};
+	//void *argument_pointer;
+	//char *temporary_string;
+	//char special = {'%', '\\'};
+	//char ss[] = {'c', 's', 'i', 'd', 'b', 'u', 'x', 'X', 'o', 'p', 'S', 'r', 'R'};
+	//char flags_char = {' ', '+', '-', '#', 'l', 'h'};
 	while (format[i] != '\0')
 	{
 		switch (format[i])

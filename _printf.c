@@ -25,7 +25,7 @@ int percentage(int *percentage_ptr, char c)
 		}
 		else
 		{
-			put_char(format[i]);
+			put_char(c);
 			return (1);
 		}
 	}
@@ -49,19 +49,13 @@ int percentage(int *percentage_ptr, char c)
 
 int _printf(const char *format, ...)
 {
-	int percentage_mode = 0, slash_mode = 0, numbers_mode = 0, number_result = 0;
-	int counter = 0, i = 0, found = 0;
-	int lc, base, argument_length, argument_int;
-	int flags[] = {0, 0, 0, 0, 0, 0, 0};
+	va_list ap;
+	int i = 0;
+	int percentage_mode = 0;
+	int counter = 0;
 	int *percentage_pointer = &percentage_mode;
 	char argument_char;
 	char *argument_string;
-	void *argument_pointer;
-	char *temporary_string;
-	char special = {'%', '\\'};
-	char ss[] = {'c', 's', 'i', 'd', 'b', 'u', 'x', 'X', 'o', 'p', 'S', 'r', 'R'};
-	char flags_char = {' ', '+', '-', '#', 'l', 'h'};
-	va_list ap;
 
 	va_start(ap, format);
 	while (format[i] != '\0')
@@ -69,7 +63,7 @@ int _printf(const char *format, ...)
 		counter += percentage(percentage_pointer, format[i]);
 		if (format[i] == 'c' && *percentage_pointer == 1)
 		{
-			argument_char = va_arg(ap, char);
+			argument_char = va_arg(ap, int);
 			put_char(argument_char);
 			counter++;
 		}

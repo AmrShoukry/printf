@@ -17,7 +17,6 @@
 int specifier_s(int *flags, char *string)
 {
 	int counter = 0;
-	int i;
 
 	int string_length = get_string_length(string);
 	int buffer_length = flags[5];

@@ -2,24 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/**
- * get_string_length - a function that returns the length of a string.
- * @string: The string to get its length.
- *
- * Return: the length of @string
- */
-
-int get_string_length(char *string)
-{
-	int length = 0;
-
-	while (string[length] != '\0')
-	{
-		length++;
-	}
-
-	return (length);
-}
 
 /**
  * rev_string - a function that returns a reversed string.
@@ -32,6 +14,7 @@ char *rev_string(char *s)
 {
 	int len = get_string_length(s);
 	char *rev = malloc((len + 1) * sizeof(char));
+	int i;
 
 	if (rev == NULL)
 	{
@@ -39,7 +22,7 @@ char *rev_string(char *s)
 		return (NULL);
 	}
 
-	for (int i = 0; i < len; i++)
+	for (i = 0; i < len; i++)
 	{
 		rev[i] = s[len - i - 1];
 	}
