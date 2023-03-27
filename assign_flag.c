@@ -12,7 +12,7 @@
  */
 
 
-int *assign_flag(int *flags, char flag)
+void assign_flag(int *flags, char flag)
 {
 	if (flag == ' ')
 	{
@@ -34,7 +34,7 @@ int *assign_flag(int *flags, char flag)
 	{
 		flags[4] = 1;
 	}
-	else if (flag == '')
+	else if (flag == ' ')
 	{
 
 	}
@@ -47,5 +47,4 @@ int *assign_flag(int *flags, char flag)
 		flags[6] = 2;
 	}
 
-	return (flags);
 }

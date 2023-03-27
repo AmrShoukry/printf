@@ -35,5 +35,9 @@ int main(void)
 
 	printf("Number address is %s\n", address);
 	printf("Number address is %p\n", ptr);
+
+	int count = _printf("Amr %s shoukry\n", "Mohamed");
+
+	printf("Count is %i\n", count);
 	return (0);
 }

@@ -12,7 +12,7 @@
  */
 
 
-int *adjust_flags(int *flags, char specifier)
+void adjust_flags(int *flags, char specifier)
 {
 	int i;
 
@@ -50,5 +50,4 @@ int *adjust_flags(int *flags, char specifier)
 			flags[i] = 0;
 		}
 	}
-	return (flags);
 }
