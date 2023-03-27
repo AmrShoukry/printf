@@ -3,10 +3,7 @@
 
 int _printf(const char *format, ...);
 void put_char(char character);
-int get_binary_length(int decimal);
-int get_octal_length(int decimal);
-int get_decimal_length(int decimal);
-int get_hexa_length(int decimal);
+int get_base_length(int decimal, int base);
 int get_string_length(char *string);
 char *convert_decimal_to_binary(int decimal, int length);
 char *convert_decimal_to_octal(int decimal, int length);
