@@ -1,5 +1,6 @@
 #include <limits.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
 
 /**
@@ -17,9 +18,15 @@ int main(void)
 	put_char('\n');
 	
 	int number = 90;
-	int base = 8;
+	int base = 16;
 	int len = get_base_length(number, base);
 	printf("Length: of number: %i of base %i is %i\n", number, base, len);
+
+	char *str = (char *) malloc (sizeof(char) * (len + 1));
+	add_null_terminator(str, len);
+	char *numberString = convert_decimal_to_base_string(number, len, base, str);
+	
+	printf("Number in octal is: %s\n", numberString);
 
 	return (0);
 }
