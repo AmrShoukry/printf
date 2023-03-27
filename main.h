@@ -2,7 +2,7 @@
 #define PROTOTYPES
 
 int _printf(const char *format, ...);
-int put_char(char character);
+void put_char(char character);
 int get_binary_length(int decimal);
 int get_octal_length(int decimal);
 int get_decimal_length(int decimal);
