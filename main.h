@@ -18,4 +18,6 @@ void fill_length(char character, int length);
 
 int specifier_s(int *flags, char *string);
 
+int percentage(int *percentage_ptr, char c);
+
 #endif

@@ -1,0 +1,50 @@
+
+	while (format[i] != '\0')
+	{
+		switch (format[i])
+		{
+			case '%':
+				if (slash_mode == 0 && percentage_mode == 0)
+				{
+					percentage_mode = 1;
+				}
+				else
+				{
+					put_char(format[i]);
+					counter++;
+				}
+				break;
+
+			case '\\':
+				printf("7");
+				if (percentage_mode == 1)
+				{
+					continue;
+				}
+				else if (slash_mode == 0)
+				{
+					slash_mode = 1;
+				}
+				else
+				{
+					put_char(format[i]);
+					counter++;
+					slash_mode = 0;
+				}
+				break;
+
+			case '"':
+				if (slash_mode == 1)
+				{
+					put_char(format[i]);
+					counter++;
+				}
+				break;
+
+			case '\'':
+				if (percentage_mode == 1)
+				{
+					continue;
+				}
+				else
+				{
