@@ -37,7 +37,7 @@ int _printf(const char *format, ...)
 
 	while (format[i] != '\0')
 	{
-		switch(format[i])
+		switch (format[i])
 		{
 			case '%':
 				if (slash_mode == 0 && percentage_mode == 0)
@@ -210,7 +210,7 @@ int _printf(const char *format, ...)
 					counter++;
 				}
 				break;
-		
+
 			case 'p':
 				numbers_mode = 0;
 				if (percentage_mode == 1)
