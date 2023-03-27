@@ -1,28 +1,50 @@
 #include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 /**
- * rev_string - Reverses a string using malloc
- * @s: The string to reverse
+ * get_string_length - a function that returns the length of a string.
+ * @string: The string to get its length.
+ *
+ * Return: the length of @string
  */
 
-void rev_string(char *s)
+int get_string_length(char *string)
 {
-	int len = strlen(s);
-	char *temp = malloc(sizeof(char) * len);
+	int length = 0;
 
-	if (!temp)
+	while (string[length] != '\0')
 	{
-		fprintf(stderr, "Error: Memory allocation failed.\n");
-		return;
+		length++;
 	}
 
-	memcpy(temp, s, len);
+	return (length);
+}
+
+/**
+ * rev_string - a function that returns a reversed string.
+ * @s: The string to reverse.
+ *
+ * Return: a reversed version of @s, or NULL if allocation fails
+ */
+
+char *rev_string(char *s)
+{
+	int len = get_string_length(s);
+	char *rev = malloc((len + 1) * sizeof(char));
+
+	if (rev == NULL)
+	{
+		fprintf(stderr, "Error: Failed to allocate memory for reversed string.\n");
+		return (NULL);
+	}
 
 	for (int i = 0; i < len; i++)
 	{
-		s[i] = temp[len - i - 1];
+		rev[i] = s[len - i - 1];
 	}
-	free(temp);
+
+	rev[len] = '\0';
+
+	return (rev);
 }
