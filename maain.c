@@ -12,7 +12,7 @@
  */
 
 
-int main(void)
+int maain(void)
 {
 	put_char('A');
 	put_char('\n');
