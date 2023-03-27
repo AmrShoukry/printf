@@ -77,6 +77,7 @@ int _printf(const char *format, ...)
 			put_char(format[i]);
 			counter++;
 		}
+		i++;
 	}
 
 	va_end(ap);
