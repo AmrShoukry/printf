@@ -12,5 +12,6 @@ char *reverse_string(char *string);
 char *rotate13_string(char *string);
 
 int *adjust_flags(int *flags, char specifier);
+int *assign_flag(int *flags, char flag);
 
 #endif
