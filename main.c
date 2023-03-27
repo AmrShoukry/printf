@@ -28,5 +28,12 @@ int main(void)
 	
 	printf("Number in octal is: %s\n", numberString);
 
+
+	int num = 87;
+	int *ptr = &num;
+	char *address = convert_address_to_string(ptr);
+
+	printf("Number address is %s\n", address);
+	printf("Number address is %p\n", ptr);
 	return (0);
 }
