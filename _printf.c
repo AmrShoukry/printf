@@ -85,7 +85,7 @@ int _printf(const char *format, ...)
 		{
 			arg_int = va_arg(ap, int);
 			length = get_base_length(arg_int , 2);
-			temp = (char *) malloc(sizeof(char) * (length + 1);
+			temp = (char *) malloc(sizeof(char) * (length + 1));
 			string = convert_decimal_to_base_string(arg_int, length, 2, temp);
 			percentage_mode = 0;
 		}
