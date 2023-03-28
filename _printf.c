@@ -117,6 +117,13 @@ int _printf(const char *format, ...)
 			counter += _printf(string);
 			percentage_mode = 0;
 		}
+		else if (format[i] == 'r' && *percentage_pointer == 1)
+		{
+			temp = va_arg(ap, char *);
+			string = reverse_string(temp);
+			counter += _printf(string);
+			percentage_mode = 0;
+		}
 		else
 		{
 			put_char(format[i]);
