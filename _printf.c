@@ -49,7 +49,7 @@ int percentage(int *percentage_ptr, char c)
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int i = 0, percentage_mode = 0, counter = 0, arg_int, length;
+	int i = 0, percentage_mode = 0, counter = 0, arg_int, length, base;
 	int *percentage_pointer = &percentage_mode;
 	char *temp, *string;
 	char char_argument;
@@ -81,12 +81,24 @@ int _printf(const char *format, ...)
 			counter += _printf(string);
 			percentage_mode = 0;
 		}
-		else if (format[i] == 'b' && *percentage_pointer == 1)
+		else if ((format[i] == 'b' || format[i] == 'o' || format[i] == 'u' || format[i] == 'x' || format[i] == 'X') && *percentage_pointer == 1)
 		{
+			if (format[i] == 'b')
+				base = 2;
+			else if (format[i] == 'o')
+				base = 8;
+			else if (format[i] == 'u')
+				base = 10;
+			else if (format[i] == 'x' || format[i] == 'X')
+				base = 16;
 			arg_int = va_arg(ap, int);
-			length = get_base_length(arg_int , 2);
+			length = get_base_length(arg_int , base);
 			temp = (char *) malloc(sizeof(char) * (length + 1));
-			string = convert_decimal_to_base_string(arg_int, length, 2, temp);
+			string = convert_decimal_to_base_string(arg_int, length, base, temp);
+			if (format[i] == 'X')
+			{
+				string = upper(string);
+			}
 			counter += _printf(string);
 			percentage_mode = 0;
 		}

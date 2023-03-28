@@ -11,6 +11,7 @@ char *convert_char_to_string(char character);
 void add_null_terminator(char *string, int length);
 char *reverse_string(char *string);
 char *rotate13_string(char *string);
+char *upper(char *string);
 
 void adjust_flags(int *flags, char specifier);
 void assign_flag(int *flags, char flag);
