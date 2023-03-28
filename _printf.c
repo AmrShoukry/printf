@@ -66,17 +66,20 @@ int _printf(const char *format, ...)
 			temp = (char *) malloc(sizeof(char) * (length + 1));
 			string = convert_decimal_to_base_string(arg_int, length, 10, temp);
 			counter += _printf(string);
+			percentage_mode = 0;
 		}
 		else if (format[i] == 'c' && *percentage_pointer == 1)
 		{
 			char_argument = va_arg(ap, int);
 			put_char(char_argument);
 			counter++;
+			percentage_mode = 0;
 		}
 		else if (format[i] == 's' && *percentage_pointer == 1)
 		{
 			string = va_arg(ap, char *);
 			counter += _printf(string);
+			percentage_mode = 0;
 		}
 		else
 		{
