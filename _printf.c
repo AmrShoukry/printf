@@ -53,8 +53,9 @@ int _printf(const char *format, ...)
 	int percentage_mode = 0;
 	int counter = 0;
 	int *percentage_pointer = &percentage_mode;
-	char argument_char;
-	char *argument_string;
+	int arg_int, length;
+	char *temp;
+	char *string;
 
 	va_start(ap, format);
 	while (format[i] != '\0')
@@ -63,16 +64,13 @@ int _printf(const char *format, ...)
 		{
 			counter += percentage(percentage_pointer, format[i]);
 		}
-		else if (format[i] == 'c' && *percentage_pointer == 1)
+		else if ((format[i] == 'd' || format[i] == 'i') && *percentage_pointer == 1)
 		{
-			argument_char = va_arg(ap, int);
-			put_char(argument_char);
-			counter++;
-		}
-		else if (format[i] == 's' && *percentage_pointer == 1)
-		{
-			argument_string = va_arg(ap, char *);
-			counter += _printf(argument_string);
+			arg_int = va_arg(ap, int);
+			legnth = get_base_length(arg_int, 10);
+			temp = (char *) malloc(sizeof(char) * (length + 1));
+			string = convert_decimal_to_base_string(arg_int, length, 10, temp);
+			counter += _printf(string);
 		}
 		else
 		{
