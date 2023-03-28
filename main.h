@@ -12,6 +12,7 @@ void add_null_terminator(char *string, int length);
 char *reverse_string(char *string);
 char *rotate13_string(char *string);
 char *upper(char *string);
+char *fill_string(int sp, int pos, char dir, int hash, char fill, int fill_len, int length);
 
 void adjust_flags(int *flags, char specifier);
 void assign_flag(int *flags, char flag);
