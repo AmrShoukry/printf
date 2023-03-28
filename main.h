@@ -1,25 +1,121 @@
-#ifndef PROTOTYPES
-#define PROTOTYPES
+#ifndef MAIN_H
+#define MAIN_H
 
+#include <stdarg.h>
+#include <stdio.h>
+#include <unistd.h>
+
+#define UNUSED(x) (void)(x)
+#define BUFF_SIZE 1024
+
+/* FLAGS */
+#define F_MINUS 1  /* sign character (-) */
+#define F_PLUS 2   /* sign character (+) */
+#define F_ZERO 4   /* Pad with zeroes instead of spaces */
+#define F_HASH 8   /* Alternate form (depends on the conversion specifier) */
+#define F_SPACE 16 /* Positive numbers preceded by a space character */
+
+/* SIZES */
+#define S_LONG 2   /* l: long */
+#define S_SHORT 1  /* h: short */
+
+/**
+ * struct fmt - Struct op
+ *
+ * @fmt: The format.
+ * @fn: The function associated.
+ */
+
+struct fmt
+{
+	char fmt;
+	int (*fn)(va_list, char[], int, int, int, int);
+};
+
+/**
+ * typedef struct fmt fmt_t - Struct op
+ *
+ * @fmt: The format.
+ * @fm_t: The function associated.
+ */
+
+typedef struct fmt fmt_t;
+
+/* Main printf function */
 int _printf(const char *format, ...);
-void put_char(char character);
-int get_base_length(int decimal, int base);
-int get_string_length(char *string);
-char *convert_decimal_to_base_string(int decimal, int len, int base, char *str);
-char *convert_address_to_string(void *ptr);
-char *convert_char_to_string(char character);
-void add_null_terminator(char *string, int length);
-char *reverse_string(char *string);
-char *rotate13_string(char *string);
-char *upper(char *string);
-char *fill_string(int sp, int pos, char dir, int hash, char fill, int fill_len, int length);
 
-void adjust_flags(int *flags, char specifier);
-void assign_flag(int *flags, char flag);
-void fill_length(char character, int length);
+/* Handle print function */
+int handle_print(const char *fmt, int *i, va_list list, char buffer[],
+		int flags, int width, int precision, int size);
 
-int specifier_s(int *flags, char *string);
+/****************** FUNCTIONS ******************/
 
-int percentage(int *percentage_ptr, char c);
+/* Functions to print chars and strings */
+int print_char(va_list types, char buffer[], int flags, int width,
+		int precision, int size);
+int print_string(va_list types, char buffer[], int flags, int width,
+		int precision, int size);
+int print_percent(va_list types, char buffer[], int flags, int width,
+		int precision, int size);
 
-#endif
+/* Functions to print numbers */
+int print_int(va_list types, char buffer[], int flags, int width,
+		int precision, int size);
+int print_binary(va_list types, char buffer[], int flags, int width,
+		int precision, int size);
+int print_unsigned(va_list types, char buffer[], int flags, int width,
+		int precision, int size);
+int print_octal(va_list types, char buffer[], int flags, int width,
+		int precision, int size);
+int print_hexadecimal(va_list types, char buffer[], int flags, int width,
+		int precision, int size);
+int print_hexa_upper(va_list types, char buffer[], int flags, int width,
+		int precision, int size);
+
+int print_hexa(va_list types, char map_to[], char buffer[], int flags,
+		char flag_ch, int width, int precision, int size);
+
+/* Function to print non-printable characters */
+int print_non_printable(va_list types, char buffer[], int flags, int width,
+			int precision, int size);
+
+/* Function to print memory address */
+int print_pointer(va_list types, char buffer[], int flags, int width,
+		int precision, int size);
+
+/* Functions to handle other specifiers */
+int get_flags(const char *format, int *i);
+int get_width(const char *format, int *i, va_list list);
+int get_precision(const char *format, int *i, va_list list);
+int get_size(const char *format, int *i);
+
+/* Function to print string in reverse */
+int print_reverse(va_list types, char buffer[], int flags, int width,
+		int precision, int size);
+
+/* Function to print a string in ROT13 */
+int print_rot13string(va_list types, char buffer[], int flags, int width,
+		int precision, int size);
+
+/* width handler */
+int handle_write_char(char c, char buffer[],
+	int flags, int width, int precision, int size);
+int write_number(int is_positive, int ind, char buffer[],
+	int flags, int width, int precision, int size);
+int write_num(int ind, char bff[], int flags, int width, int precision,
+	int length, char padd, char extra_c);
+int write_pointer(char buffer[], int ind, int length,
+	int width, int flags, char padd, char extra_c, int padd_start);
+
+int write_unsgnd(int is_negative, int ind,
+		char buffer[], int flags, int width, int precision, int size);
+
+/* Utility Handling Functions */
+int is_printable(char);
+int append_hexa_code(char, char[], int);
+int is_digit(char);
+
+long int convert_size_number(long int num, int size);
+long int convert_size_unsgnd(unsigned long int num, int size);
+
+#endif /* MAIN_H */
