@@ -60,14 +60,17 @@ int _printf(const char *format, ...)
 	va_start(ap, format);
 	while (format[i] != '\0')
 	{
-		counter += percentage(percentage_pointer, format[i]);
-		if (format[i] == 'c' && *percentage_pointer == 1)
+		if (format[i] == '%')
+		{
+			counter += percentage(percentage_pointer, format[i]);
+		}
+		else if (format[i] == 'c' && *percentage_pointer == 1)
 		{
 			argument_char = va_arg(ap, int);
 			put_char(argument_char);
 			counter++;
 		}
-		if (format[i] == 's' && *percentage_pointer == 1)
+		else if (format[i] == 's' && *percentage_pointer == 1)
 		{
 			argument_string = va_arg(ap, char *);
 			counter += _printf(argument_string);
