@@ -67,7 +67,7 @@ int _printf(const char *format, ...)
 		else if ((format[i] == 'd' || format[i] == 'i') && *percentage_pointer == 1)
 		{
 			arg_int = va_arg(ap, int);
-			legnth = get_base_length(arg_int, 10);
+			length = get_base_length(arg_int, 10);
 			temp = (char *) malloc(sizeof(char) * (length + 1));
 			string = convert_decimal_to_base_string(arg_int, length, 10, temp);
 			counter += _printf(string);
