@@ -10,9 +10,9 @@
  * Return: a reversed version of @s, or NULL if allocation fails
  */
 
-char *rev_string(char *s)
+char *reverse_string(char *string)
 {
-	int len = get_string_length(s);
+	int len = get_string_length(string);
 	char *rev = malloc((len + 1) * sizeof(char));
 	int i;
 
@@ -24,7 +24,7 @@ char *rev_string(char *s)
 
 	for (i = 0; i < len; i++)
 	{
-		rev[i] = s[len - i - 1];
+		rev[i] = string[len - i - 1];
 	}
 
 	rev[len] = '\0';
