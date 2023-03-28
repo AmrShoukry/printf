@@ -53,6 +53,7 @@ int _printf(const char *format, ...)
 	int *percentage_pointer = &percentage_mode;
 	char *temp, *string;
 	char char_argument;
+	void *ptr;
 
 	va_start(ap, format);
 	while (format[i] != '\0')
@@ -99,6 +100,13 @@ int _printf(const char *format, ...)
 			{
 				string = upper(string);
 			}
+			counter += _printf(string);
+			percentage_mode = 0;
+		}
+		else if (format[i] == 'p' && *percentage_pointer == 1)
+		{
+			ptr = va_arg(ap, void *);
+			string = convert_address_to_string(ptr);
 			counter += _printf(string);
 			percentage_mode = 0;
 		}
